@@ -43,22 +43,22 @@
 		["Sistemas Operativos","INF-246",3,5,"TIC",["INF-245"],"A"],
 		["Ingeniería, Informática y Sociedad","INF-276",3,5,"TIN",["INF-270"],"A"],
 		["Algoritmos y Complejidad","INF-221",3,5,"FI",["INF-152","INF-253"],"A"],
-		["Optimización","INF-292",3,5,"SD",["MAT-023"],"A"],
+		["Optimización","INF-292",3,5,"SD",["IWI-131", "MAT-023"],"A"],
 		["Libre IV","INF-4",1,2,"HUM",[],"A"]
 	],
 	"s7": [
-		["Ingeniería de Software","INF-225",3,5,"IS",["INF-236"],"I"],
-		["Redes de Computadores","INF-256",3,5,"TIC",["INF-246"],"I"],
-		["Información y Matemáticas Financieras","ICN-270",3,5,"IND",["IWN-170"],"I"],
-		["Computación Científica","INF-285",3,5,"AN",["MAT-024","INF-221"],"I"],
-		["Investigación de Operaciones","INF-293",3,6,"SD",["INF-280","INF-292"],"I"],
+		["Ingeniería de Software","INF-225",3,5,"IS",["INF-236"],"A"],
+		["Redes de Computadores","INF-256",3,5,"TIC",["INF-246"],"A"],
+		["Información y Matemáticas Financieras","ICN-270",3,5,"IND",["IWN-170"],"A"],
+		["Computación Científica","INF-285",3,5,"AN",["MAT-024","INF-221"],"A"],
+		["Investigación de Operaciones","INF-293",3,5,"SD",["INF-280","INF-292"],"A"],
 		["Libre V","INF-5",1,2,"HUM",[],"A"]
 	],
 	"s8": [
 		["Diseño Interfaces Usuarias","INF-322",3,5,"IS",["INF-225"],"P"],
-		["Sistemas Distribuidos","INF-343",3,5,"TIC",["INF-256"],"P"],
+		["Sistemas Distribuidos","INF-343",3,5,"TIC",["INF-256"],"A"],
 		["Electivo Informática I","INF-301",3,5,"ELEC",[],"P"],
-		["Inteligencia Artificial","INF-295",3,5,"AN",["INF-292","INF-221"],"P"],
+		["Inteligencia Artificial","INF-295",3,5,"AN",["INF-292","INF-221"],"A"],
 		["Sistemas de Gestión","INF-266",3,5,"SD",["INF-276"],"P"],
 		["Libre VI","INF-6",1,2,"HUM",[],"A"]
 	],
@@ -75,9 +75,9 @@
 		["Electivo III","INF-313",3,5,"ELEC",[],"A"],
 		["Electivo IV","INF-314",3,5,"ELEC",[],"A"],
 		["Taller Desarrollo de Proyecto de Informática","INF-228",6,10,"TIN",["INF-360"],"P"],
-		["Trabajo de Título 1","INF-309",1,2,"TIN",["INF-360"],"P"]
+		["Trabajo de Título 1","INF-309",1,2,"TIN",["INF-360"],"A"]
 	],
 	"s11": [
-		["Trabajo de Título 2","INF-310",12,20,"TIN",["INF-228","INF-309"],"I"]
+		["Trabajo de Título 2","INF-310",12,20,"TIN",["INF-228","INF-309"],"A"]
 	]
 }
