@@ -1,0 +1,9 @@
+{
+	"CH": ["#c2b774", "Comunicación y Humanidades"],
+	"CSSE": ["#728c50", "Ciencias Sociales y Económicas"],
+	"CB": ["#7d403c", "Ciencias Básicas"],
+	"CSI": ["#f79400", "Ciencias de la Ingeniería"],
+	"ESP": ["#324773", "Especialidad"],
+	"ELEC": ["#3f009e", "Electivos"],
+	"CTS": ["#482354", "Competencias Transversales Sello"]
+}

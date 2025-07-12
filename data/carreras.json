@@ -48,8 +48,12 @@
     "Link": "QUI"
   },
   {
-    "Nombre": "Ing. Civil Informática",
-    "Link": "INF"
+    "Nombre": "Ing. Civil Informática (Malla Antigua)",
+    "Link": "INF-O"
+  },
+  {
+	"Nombre" : "Ing. Civil Informática (Malla Nueva [2025])",
+	"Link" : "INF-N"
   },
   {
     "Nombre": "Ing. Aviación Comercial",
