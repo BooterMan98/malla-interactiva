@@ -1,6 +1,14 @@
 {
-	"PC": ["#00838F", "Plan Común"],
-	"HUM": ["#B0B91D", "Humanistas, libres y deportes"],
-	"IND": ["#6BA8D1", "Industrias"],
-	"ICOM": ["#F47C23", "Ingeniería comercial"]
+	"MATE": ["#CC6600", "Matemática"],
+	"TLLR": ["#FF0040", "Talleres, Creación, Seminario"],
+	"HUM": ["#66CC33", "Estudios Humanísticos"],
+	"EFI": ["#3366CC", "Defider"],
+	"INFO": ["#660099", "Informática"],
+	"ECON": ["#4D0629", "Economías"],
+	"ADMI": ["#336600", "Administración"],
+	"FINZ": ["#577170", "Finanzas"],
+	"ENGL": ["#6699FF", "Inglés"],
+	"ELEC": ["#F6546A", "Electivos"],
+	"MKTG": ["#3399FF", "Marketing y Gestión"],
+	"OPER": ["#C5ADE6", "Operaciones"]
 }
