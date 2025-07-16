@@ -1,82 +1,79 @@
 {
-   "s1": [
-      ["Programación","IWI-131",3,0,"PC",[],""],
-      ["Álgebra y geometría","MATE10",4,0,"PC",[],""],
-      ["Introducción a la Física","FIS-100",3,6,"PC",[],"A"],
-      ["Introducción a la ingeniería","IWG-101",2,0,"HUM",[],""],
-      ["Educación Física I","DEW-100",1,0,"HUM",[],""]
+   "s1":[
+      ["Álgebra y Geometría","MATE10",6,"MATE"],
+      ["Administración de Empresas","ICS111",5,"ADMI"],
+      ["Comunicación Escrita","HAC100",5,"HUM"],
+      ["Programación y Tratamiento de Datos para la Gestión","INF130",5,"INFO"],
+      ["Introducción a la Economía","ICS161",5,"ECON"],
+      ["Inglés I","HCW100",3,"ENGL"],
+      ["Educación Física I","EFI100",2,"EFI"]
    ],
-   "s2": [
-      ["Química y Sociedad","QUI-010",3,0,"PC",[],""],
-      ["Pre-cálculo","MATE11",3,0,"PC",["MATE10"],""],
-      ["Álgebra lineal","MATE20",3,0,"PC",["MATE10"],""],
-      ["Administración de empresas","ICS001",3,0,"ICOM",["IWG-101"],""],
-      ["Inglés Básico","HCW319",2,0,"HUM",[],""],
-      ["Humanístico I","HRW1",2,0,"HUM",[],""],
-      ["Educación Física II","DEW-101",1,0,"HUM",["DEW-100"],""]
+   "s2":[
+      ["Pre-Cálculo","MATE11",5,"MATE",["MATE10"]],
+      ["Álgebra Lineal","MATE20",5,"MATE",["MATE10"]],
+      ["Comunicación Oral","HAA102",5,"HUM",["HAC100"]],
+      ["Bases de Datos para la Gestión","INF303",5,"INFO",["INF130"]],
+      ["Contabilidad I","ICS140",0,"FINZ"],
+      ["Inglés II","HCW101",3,"ENGL",["HCW100"]],
+      ["Educación Física II","EFI101",2,"EFI",["EFI100"]]
    ],
-   "s3": [
-      ["Cálculo diferencial","MATE25",4,0,"PC",["MATE11","MATE20"],""],
-      ["Contabilidad I","ICS002",3,0,"ICOM",["ICS001"],""],
-      ["Deporte","DEW0",1,0,"HUM",["DEW-101"],""],
-      ["Humanístico II","HRW2",2,0,"HUM",[],""],
-      ["Inglés medio I","HCW321",2,0,"HUM",["HCW319"],""],
-      ["Legislación empresarial","ICS003",3,0,"ICOM",["ICS001"],""]
+   "s3":[
+      ["Cálculo Diferencial","MATE25",5,"MATE",["MATE11","MATE20"]],
+      ["Taller de Creatividad","IDP107",5,"TLLR",["MATE10"]],
+      ["Legislación Empresarial","ICS112",5,"ADMI",["ICS111"]],
+      ["Programación para la Analítica de Gestión","INF316",0,"INFO"],
+      ["Contabilidad II","ICS144",0,"FINZ"],
+      ["Inglés III","HCW102",3,"ENGL",["HCW101"]]
    ],
-   "s4": [
-      ["Cálculo integral","MATE26",3,0,"PC",["MATE25"],""],
-      ["Contabilidad II","ICS004",3,0,"ICOM",["ICS002"],""],
-      ["Humanístico III","HRW3",2,0,"HUM",[],""],
-      ["Inglés medio II","HCW322",2,0,"HUM",["HCW321"],""],
-      ["Laboratorio de procesos industriales","ILN252",4,0,"IND",["QUI-010","FIS-100"],""],
-      ["Microeconomía I","ICS005",3,0,"ICOM",["MATE25"],""]
+   "s4":[
+      ["Cálculo Integral","MATE26",5,"MATE",["MATE25"]],
+      ["Taller de Pensamiento de Diseño","IDP108",5,"TLLR",["IDP107"]],
+      ["Introducción a la Ingeniería Sostenible","IQA161",5,"ECON",["ICS161"]],
+      ["Ingeniería Económica","ICS142",5,"FINZ",["MATE20","INF130"]],
+      ["Microeconomía I","ICS162",5,"ECON",["ICS161","MATE25"]],
+      ["Inglés IV","HCW200",3,"ENGL",["HCW102"]],
+      ["Deportes","DEW0",2,"EFI",["EFI101"]]
    ],
-   "s5": [
-      ["Gestión de investigación de operaciones","ICS010",4,0,"ICOM",["MATE26"],""],
-      ["Ingeniería económica","ICS009",3,0,"ICOM",["ICS002"],""],
-      ["Inglés avanzado I","HCW323",2,0,"HUM",["HCW322"],""],
-      ["Legislación tributaria","ICS008",3,0,"ICOM",["ICS003"],""],
-      ["Macroeconomía I","ICS007",3,0,"ICOM",["ICS005"],""],
-      ["Microeconomía II","ICS006",3,0,"ICOM",["ICS005"],""],
-      ["Probabilidad y estadística comercial","MAT032",4,0,"PC",["MATE26"],""]
+   "s5":[
+      ["Probabilidad y Estadística","MATE034",0,"MATE"],
+      ["Historia Económica","HAH101",5,"HUM"],
+      ["Personas y Organizaciones I","ICS214",0,"ADMI"],
+      ["Marketing I","ICS230",0,"MKTG"],
+      ["Macroeconomía I","ICS263",5,"ECON",["ICS162"]],
+      ["Inglés V","HCW201",3,"ENGL",["HCW200"]]
    ],
-   "s6": [
-      ["Econometría","ICS013",4,0,"ICOM",["MAT032"],""],
-      ["Finanzas I","ICS014",3,0,"ICOM",["ICS004"],""],
-      ["Inglés avanzado II","HCW324",2,0,"HUM",["HCW323"],""],
-      ["Macroeconomía II","ICS012",3,0,"ICOM",["ICS007"],""],
-      ["Organización industrial","ICS011",3,0,"ICOM",["ICS005"],""],
-      ["Recursos humanos","ICS015",3,0,"ICOM",["ICS001"],""]
+   "s6":[
+      ["Econometría","ICS294",7,"INFO",["MATE034"]],
+      ["Optimización para la Gestión","ICS297",0,"INFO"],
+      ["Personas y Organizaciones II","ICS316",0,"ADMI",["ICS214"]],
+      ["Microeconomía II","ICS264",5,"ECON",["ICS162"]],
+      ["Macroeconomía II","ICS363",5,"ECON",["ICS263"]],
+      ["Inglés VI","HCW202",3,"ENGL",["HCW201"]]
    ],
-   "s7": [
-      ["Evaluación de proyectos generales","ICS019",3,0,"ICOM",["ICS005"],""],
-      ["Finanzas II","ICS018",3,0,"ICOM",["ICS014"],""],
-      ["Gestión de operaciones","ICS020",4,0,"ICOM",["ICS010"],""],
-      ["Inglés conversación I","HCW325",2,0,"HUM",["HCW324"],""],
-      ["Marketing I","ICS017",3,0,"ICOM",["ICS004"],""],
-      ["Sistemas de información para la gestión","ICS016",3,0,"ICOM",["IWI-131","ICS005"],""]
+   "s7":[
+      ["Análisis de Datos para los Negocios I","ICS165",0,"INFO"],
+      ["Entorno Legal de la Empresa","ICS315",7,"ADMI"],
+      ["Gestión Estratégica I","ICS221",6,"ADMI"],
+      ["Organización Industrial","ICS265",5,"ECON",["ICS264","ICS263"]],
+      ["Evaluación Privada y Social de Proyectos","ICS164",0,"TLLR"],
+      ["Finanzas I","ICS247",0,"FINZ"]
    ],
-   "s8": [
-      ["Desarrollo y control de proyectos","ICS024",3,0,"ICOM",["ICS019"],""],
-      ["Electivo I","ICS801",3,0,"ICOM",[],""],
-      ["Gestión estratégica","ICS022",3,0,"ICOM",["ICS014","ICS017","ICS015"],""],
-      ["Inglés conversación II","HCW326",2,0,"HUM",["HCW325"],""],
-      ["Liderazgo empresarial","ICS021",3,0,"ICOM",["ICS015","ICS017"],""],
-      ["Marketing II","ICS023",3,0,"ICOM",["ICS017","ICS013"],""]
+   "s8":[
+      ["Análisis de Datos para los Negocios II","ICS175",0,"INFO",["ICS165"]],
+      ["Gestión de Operaciones","ICS296",5,"INFO"],
+      ["Dirección Estratégica I","ICS223",6,"ADMI"],
+      ["Marketing II","ICS233",0,"MKTG"],
+      ["Preparación y Presentación de Proyectos","ICS166",0,"TLLR"],
+      ["Finanzas Corporativas","ICS246",0,"FINZ",["ICS247"]]
    ],
-   "s9": [
-      ["Creación de empresas","ICS026",3,0,"ICOM",["ICS022"],""],
-      ["Economía internacional","ICS030",3,0,"ICOM",["ICS012"],""],
-      ["Gestión de calidad total","ICS027",3,0,"ICOM",["ICS010"],""],
-      ["Gestión estratégica II","ICS028",3,0,"ICOM",["ICS022"],""],
-      ["Proyectos","ICS025",4,0,"ICOM",["ICS019"],""],
-      ["Taller de título I","ICS029",2,0,"ICOM",["ICS022"],""]
+   "s9":[
+      ["Optativo de Profundización I","ICS700",0,"TLLR"],
+      ["Optativo de Profundización II","ICS701",0,"TLLR"],
+      ["Electivo I","ICS801",5,"ELEC"],
+      ["Electivo II","ICS802",5,"ELEC"]
    ],
-   "s10": [
-      ["Electivo II","ICS802",3,0,"ICOM",[],""],
-      ["Electivo III","ICS803",3,0,"ICOM",[],""],
-      ["Espíritu empresarial","ICS033",3,0,"ICOM",["ICS021"],""],
-      ["Juego de negocios","ICS031",3,0,"ICOM",["ICS022"],""],
-      ["Taller de título II","ICS032",8,0,"ICOM",["ICS029"],""]
+   "s10":[
+      ["Seminario de Título","ICS399",17,"TLLR"],
+      ["Electivo III","ICS803",5,"ELEC"]
    ]
 }
