@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Psicología Interactiva</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+    .semester { border: 2px solid #ccc; border-radius: 12px; padding: 10px; margin-bottom: 20px; background: white; }
+    .semester h2 { margin-top: 0; }
+    .course {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px;
+      background-color: pink;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .approved {
+      background-color: purple !important;
+      color: white;
+      text-decoration: line-through;
+    }
+    .locked {
+      background-color: #ccc !important;
+      color: #555;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Psicología Interactiva</h1>
+  <div id="malla"></div>
+  <script>
+    const cursos = [
+      { id: "intro", nombre: "Introducción a la psicología", semestre: 1, prerequisitos: [] },
+      { id: "bases", nombre: "Bases biológicas del comportamiento", semestre: 1, prerequisitos: [] },
+      { id: "filosofia", nombre: "Filosofía moderna", semestre: 1, prerequisitos: [] },
+      { id: "procesos", nombre: "Procesos psicológicos", semestre: 1, prerequisitos: [] },
+      { id: "logica", nombre: "Lógica de la investigación", semestre: 1, prerequisitos: [] },
+      { id: "arte", nombre: "Arte literatura y sociedad", semestre: 1, prerequisitos: [] },
+      { id: "teoria", nombre: "Teoría y sistemas psicológicos", semestre: 2, prerequisitos: [] },
+      { id: "neuro", nombre: "Neurociencias y comportamiento", semestre: 2, prerequisitos: ["bases"] },
+      { id: "onto", nombre: "Ontoepistemologia y psicología", semestre: 2, prerequisitos: [] },
+      { id: "antropo", nombre: "Antropología social", semestre: 2, prerequisitos: [] },
+      { id: "cuanti", nombre: "Metodología cuantitativa", semestre: 2, prerequisitos: [] },
+      { id: "ddhh", nombre: "Transversal 1: Derechos Humanos", semestre: 2, prerequisitos: [] },
+      { id: "social", nombre: "Psicología social", semestre: 3, prerequisitos: [] },
+      { id: "psicobio", nombre: "Psicobiología", semestre: 3, prerequisitos: ["neuro"] },
+      { id: "genero", nombre: "Género y sociedades", semestre: 3, prerequisitos: ["procesos"] },
+      { id: "infancia", nombre: "Ciclo vital infancia y adolescencia", semestre: 3, prerequisitos: [] },
+      { id: "analisis", nombre: "Análisis de datos cuantitativos", semestre: 3, prerequisitos: ["cuanti"] },
+      { id: "desarrollo1", nombre: "Transversal 2: Desarrollo del pensamiento", semestre: 3, prerequisitos: [] },
+      { id: "socialCont", nombre: "Psicología social contemporánea", semestre: 4, prerequisitos: ["social"] },
+      { id: "aprendizaje", nombre: "Aprendizaje y conducta", semestre: 4, prerequisitos: [] },
+      { id: "etica", nombre: "Ética y deontología", semestre: 4, prerequisitos: [] },
+      { id: "adultez", nombre: "Ciclo vital adultez y vejez", semestre: 4, prerequisitos: [] },
+      { id: "cuali1", nombre: "Metodología cualitativa 1", semestre: 4, prerequisitos: ["analisis"] },
+      { id: "ingles1", nombre: "Inglés 1", semestre: 4, prerequisitos: [] },
+      { id: "personalidad", nombre: "Psicología de la personalidad", semestre: 5, prerequisitos: [] },
+      { id: "psicopato", nombre: "Psicopatología", semestre: 5, prerequisitos: ["aprendizaje"] },
+      { id: "lenguaje", nombre: "Psicología y lenguaje", semestre: 5, prerequisitos: [] },
+      { id: "terapias", nombre: "Teorías en psicoterapia", semestre: 5, prerequisitos: ["etica"] },
+      { id: "cuali2", nombre: "Metodología cualitativa 2", semestre: 5, prerequisitos: ["cuali1"] },
+      { id: "ingles2", nombre: "Inglés 2", semestre: 5, prerequisitos: ["ingles1"] },
+      { id: "tecnicas", nombre: "Técnicas manejo indiv. y grupal", semestre: 6, prerequisitos: [] },
+      { id: "psiquiatria", nombre: "Psiquiatría", semestre: 6, prerequisitos: ["psicopato"] },
+      { id: "comunicacion", nombre: "Psicología y comunicación", semestre: 6, prerequisitos: ["lenguaje"] },
+      { id: "modelos", nombre: "Modelos en psicoterapia", semestre: 6, prerequisitos: ["terapias"] },
+      { id: "psicometria", nombre: "Pruebas psicológicas psicométricas", semestre: 6, prerequisitos: ["personalidad"] },
+      { id: "ingles3", nombre: "Inglés 3", semestre: 6, prerequisitos: ["ingles2"] },
+      { id: "educacional", nombre: "Psicología educacional", semestre: 7, prerequisitos: [] },
+      { id: "infanto", nombre: "Clínica infanto juvenil", semestre: 7, prerequisitos: ["modelos"] },
+      { id: "organizacional", nombre: "Psicología organizacional", semestre: 7, prerequisitos: [] },
+      { id: "comunitaria", nombre: "Psicología comunitaria", semestre: 7, prerequisitos: [] },
+      { id: "proyectivas", nombre: "Pruebas psicológicas proyectivas", semestre: 7, prerequisitos: ["psicometria"] },
+      { id: "integracion", nombre: "Integración profesional", semestre: 7, prerequisitos: ["adultez", "tecnicas"] },
+      { id: "evaledu", nombre: "Evaluación en educación", semestre: 8, prerequisitos: ["educacional"] },
+      { id: "clinicaAdultos", nombre: "Clínica adultos", semestre: 8, prerequisitos: ["psiquiatria"] },
+      { id: "desorg", nombre: "Desarrollo organizacional", semestre: 8, prerequisitos: ["organizacional"] },
+      { id: "disenocomu", nombre: "Diseño de proyectos comunitarios", semestre: 8, prerequisitos: ["comunitaria"] },
+      { id: "seminario", nombre: "Seminario de investigación", semestre: 8, prerequisitos: ["cuali2", "integracion"] },
+      { id: "optativo", nombre: "Optativo por facultad", semestre: 8, prerequisitos: [] },
+      { id: "educa9", nombre: "Intervención educacional", semestre: 9, prerequisitos: ["evaledu"] },
+      { id: "clinica9", nombre: "Intervención clínica", semestre: 9, prerequisitos: ["clinicaAdultos"] },
+      { id: "org9", nombre: "Intervención organizacional", semestre: 9, prerequisitos: ["desorg"] },
+      { id: "comu9", nombre: "Intervención comunitaria", semestre: 9, prerequisitos: ["disenocomu"] },
+      { id: "practica", nombre: "Práctica profesional", semestre: 10, prerequisitos: ["educa9", "clinica9", "org9", "comu9"] }
+    ];
+
+    const estadoCursos = {};
+
+    function renderMalla() {
+      const contenedor = document.getElementById("malla");
+      contenedor.innerHTML = "";
+      const semestres = [...new Set(cursos.map(c => c.semestre))];
+
+      semestres.forEach(sem => {
+        const bloque = document.createElement("div");
+        bloque.className = "semester";
+        bloque.innerHTML = `<h2>Semestre ${sem}</h2>`;
+
+        cursos.filter(c => c.semestre === sem).forEach(curso => {
+          const div = document.createElement("div");
+          div.className = "course";
+          div.id = curso.id;
+          div.textContent = curso.nombre;
+
+          const requisitosOk = curso.prerequisitos.every(pr => estadoCursos[pr]);
+
+          if (curso.prerequisitos.length && !requisitosOk) {
+            div.classList.add("locked");
+          } else if (estadoCursos[curso.id]) {
+            div.classList.add("approved");
+          }
+
+          div.addEventListener("click", () => {
+            if (div.classList.contains("locked")) return;
+            estadoCursos[curso.id] = !estadoCursos[curso.id];
+            renderMalla();
+          });
+
+          bloque.appendChild(div);
+        });
+        contenedor.appendChild(bloque);
+      });
+    }
+
+    renderMalla();
+  </script>
+</body>
+</html>
