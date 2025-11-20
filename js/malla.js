@@ -97,7 +97,7 @@ class Malla {
                 // Se instancia el ramo y se agrega a la malla en su semestre
                 totalRamos += 1;
                 // Agregado de ramos por semestre
-                if (subject.length === 7) {
+                if (subject.length >= 7) {
                     // Nuevo formato con ramos SCT
                     this.malla[semester][subject[1]] = new this.subjectType(subject[0], subject[1], subject[2], subject[4], subject[5],this.SUBJECTID++, this, subject[3], false ,subject[6])
                 } else {
@@ -309,9 +309,9 @@ class Malla {
     }
 
     // Renderiza las descripciones de las categorías
-    showColorDescriptions() {
+    showColorDescriptions(className=".color-description") {
         Object.keys(this.categories).forEach(key => {
-            let color_description = d3.select(".color-description").append("div")
+            let color_description = d3.select(className).append("div")
                 .attr("style", "display:flex;vertical-align:middle;margin-right:15px;");
             let circle_color = color_description.append("svg")
                 .attr("height", "25px")
