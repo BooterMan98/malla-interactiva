@@ -26,6 +26,7 @@ class Malla {
         this.checkPrer = false;
         this.saveEnabled = false;
         this.isMallaSet = false;
+        this.isMallaRendered = false
         this.showCreditSystem = false;
         this.showCreditStats = false
 
@@ -306,6 +307,7 @@ class Malla {
 
             globalX += this.subjectType.getDisplayWidth(this.scaleX) + separator;
         })
+        this.isMallaRendered = true
     }
 
     // Renderiza las descripciones de las categorías

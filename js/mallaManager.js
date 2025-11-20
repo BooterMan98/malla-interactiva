@@ -7,20 +7,20 @@ class MallaManager {
     }
 
     renderHomologateMalla() {
-      console.log(this.homologatedMalla.hasSetCarrerPromise)
       if (this.homologatedMalla.hasSetCarrerPromise != null) {
-        console.log("not null")
         this.homologatedMalla.hasSetCarrerPromise.then(() => {
-      console.log("Rendering homologated malla")
+          let approvedList = this.malla.APPROVED.map( subject => subject.sigla)
+          if (this.homologatedMalla.isMallaRendered) {
+            this.homologatedMalla.defineHomologatedRamos(approvedList)
+            return
+          }
           document.getElementsByClassName("homologatedMalla")[0].textContent = ""
           this.homologatedMalla.drawMalla(".homologatedMalla")
           this.homologatedMalla.showColorDescriptions(".hologated-color-description")
           this.homologatedMalla.enablePrerCheck()
-          this.homologatedMalla.defineHomologatedRamos(this.malla.APPROVED)
+          this.homologatedMalla.defineHomologatedRamos(approvedList)
           document.getElementsByClassName("homologatedMalla")[0].scrollIntoView({behavior: "smooth", block: "start"})
         })
-      } else {
-        this.homologatedMalla.defineHomologatedRamos(this.malla.getApprovedSubjects())
       }
     }
 

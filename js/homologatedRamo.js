@@ -1,7 +1,7 @@
 
 class HomologatedRamo extends Ramo {
 
-    constructor(name, sigla, credits, sector, prer, id, malla, creditsSCT = 0, isCustom=false, dictatesIn = "", homologations= [], hologationType="1") {
+    constructor(name, sigla, credits, sector, prer, id, malla, creditsSCT = 0, isCustom=false, dictatesIn = "", homologations= [], hologationType=1) {
         super(name, sigla, credits, sector, prer, id, malla, creditsSCT, isCustom, dictatesIn);
         this.isCustom = isCustom;
         this.homologations = homologations;
@@ -25,11 +25,20 @@ class HomologatedRamo extends Ramo {
 
     // acciones a realizar cuando se clickea el ramo
     isBeingClicked() {
-        this.approveRamo()
+        if (!this.homologated || this.homologationType === 2) {
+            this.approveRamo()
+            this.malla.verifyPrer();
+        }
+
     }
 
     checkHomologatability(approvedSubjects) {
-        for (homologation in this.homologations) {
+        if (this.homologations.length == 0) {
+            return false
+        }
+        console.log(approvedSubjects)
+        console.log(this.homologations)
+        for (let homologation of this.homologations) {
            let hasSujectToHomologate = approvedSubjects.find((subject) => subject == homologation)
             if (hasSujectToHomologate) {
                 return true
@@ -42,14 +51,29 @@ class HomologatedRamo extends Ramo {
     homologateRamo() {
         if (!this.isCustom)
             this.ramo.select(".selected").transition().delay(20).attr("opacity", ".8");
-
         this.homologated = true;
+        if (this.homologationType === 1 && !this.approved) {
+            this.approveRamo()
+        }
+        this.verifyPrer()
     };
 
     deHomologateRame() {
         if (!this.isCustom)
             this.ramo.select(".selected").transition().delay(20).attr("opacity", "0.01");
         this.homologated = false;
+        if (this.approved) {
+            this.approveRamo()
+        }
+        this.verifyPrer()
+    }
+
+    verifyPrer() {
+        if (!this.homologated) {
+            super.verifyPrer()
+            return
+        }
+        this.ramo.select(".non-approved").transition().delay(20).attr("opacity", "0.0");
     }
 
     // activa la animación de warning con el color que se desee
