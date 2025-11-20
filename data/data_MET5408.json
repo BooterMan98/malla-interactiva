@@ -1,0 +1,78 @@
+{
+	"s1": [
+		["Álgebra y Geometría","MAT060",0,6,"MAT",[],"A"],
+		["Introducción al Cálculo","MAT070",0,6,"MAT",[],""],
+		["Introducción a la Física","FIS100",0,6,"FIS",[],"A"],
+		["Introducción a la Programación","INF129",0,7,"PC",[],""],
+		["Educación Física","EFI200",0,2,"PC",[],""],
+		["Comunicación efectiva en español / ingles I","HXW006",0,3,"HUM",[],"A"]
+	],
+	"s2": [
+		["Álgebra Lineal","MAT061",0,6,"MAT",["MAT060"],"A"],
+		["Cálculo en una variable","MAT071",0,6,"MAT",["MAT070"],"A"],
+		["Física general mecánica", "FIS11125", 0, 6, "FIS", ["FIS100"], ""],
+		["Proyecto inicial", "IWG400", 0, 7, "PC", [], ""],
+		["Educación Física II","EFI201",0,2,"PC",["EFI200"],""],
+		["Comunicación efectiva en español / ingles II","HXW007",0,3,"HUM",["HXW006"],""]
+	],
+	"s3": [
+		["Geología y minerología","MET20225",0,4,"MET",["IWG400"],"", ["MET281"]],
+		["Procesos metalúrgicos sustentables","MET20125",0,4,"MET",["IWG400"],""],
+		["Cálculo en varias variables","MAT00225",0,6,"MAT",["MAT061","MAT071"],"A"],
+		["Calor y Ondas","FIS13125",0,0,"FIS",[],""],
+		["Química para ingeniería","QUI70125",0,6,"QUI",["MAT071"],""],
+		["Análisis crítico de texto","HMN70625",0,3,"HUM",[],"A"]
+	],
+	"s4": [
+		["Análisis de procesos metalúrgicos","MET20325",0,5,"MET",["MET20225"],"", ["MET110"]],
+		["Ecuaciones diferenciales","MAT03325",0,3,"MAT",[],""],
+		["Probabilidad y estadística","MAT70725",0,6,"MAT",["MAT00225"],""],
+		["Electricidad y magnetismo","FIS12125 ",0,0,"FIS",[],""],
+		["Química inorgánica", "QUI70225", 0, 6, "QUI", ["QUI70125"], ""],
+		["Comunicación Efectiva en español / inglés III","HMN70725",0,3,"HUM",["HXW007"],"A"]
+	],
+	"s5": [
+		["Ciencia e ingeniería de los materiales","MET30525",0,6,"MET",["QUI70225"],"", ["MET120"]],
+		["Cinética y diseño de reactores metalúrgicos","MET30425",0,6,"MET",[],"", ["MET332"]],
+		["Mecánica de fluidos","IQA70425",0,6,"ICQ",["FIS11125"],"",["IWQ221"]],
+		["Administración y sostenibilidad organizacional","ICS70325",0,4,"ING",[],""],
+		["Ciencia de datos","TEL401026",0,6,"ING",["MAT70725"],"A"],
+		["Práctica en acción comunitaria","HMN70825",0,3,"HUM",["IWG400"],""]
+	],
+	"s6": [
+		["Metalurgia de minerales Industriales","MET30825",0,4,"MET",["TEL401026"],""],
+		["Reducción de tamaño y clasificación de minerales","MET30725",0,6,"MET",["MET20325"],"", ["ICQ328"]],
+		["Termodinámica metalúrgica","MET30625",0,6,"MET",["MET20325"],"", ["MET136"]],
+		["Transferencia de calor", "IQA71225", 0, 6, "ICQ", ["IQA70425"], "", ["IWQ222"]],
+		["Ingeniería económica","IND73225",0,4,"IND",["QUI70225"],""],
+		["Comunicación efectiva en español / inglés IV","HMN70925",0,3,"HUM",["HMN70725"],""]
+	],
+	"s7": [
+		["Concentración de minerales","MET41028",0,6,"MET",["MET30725"],"",["ICQ327"]],
+		["Hidrometalurgia","MET41228",0,4,"MET",["MET30425"],"",["MET237"]],
+		["Mecánica de sólidos","MET41128",0,6,"MET",["MET30625"],"", ["MET240"]],
+		["Termodinámica de Materiales", "MET40928",0,5, "MET", ["MET30625"], "", ["MET137"]],
+		["Gestión de proyectos","IND73325",0,6,"IND",["IND73225"],""],
+		["Inglés disciplinar","HMN71028",0,3,"HUM",[],""]
+	],
+	"s8": [
+		["Comportamiento Mecánico de Materiales","MET41628",0,5,"MET",["MET41228"],"",["MET244"]],
+		["Electrometalúrgia y corrosión","MET41328",0,5,"MET",["MET41228"],""],
+		["Metalurgia Física","MET41828",0,6,"MET",["MET40928"],"",["MET226"]],
+		["Procesos metalúrgicos de alta temperatura","MET41528",0,5,"MET",["IQA71225"],"",["MET236"]],
+		["Seguridad y legislación minero-metalúrgica","MET41728",0,4,"MET",["ICS70325"],""],
+		["Taller de ingeniería","MET41428",0,5,"MET",["MET40928"],""]
+	],
+	"s9": [
+		["Aleaciones en ingeniería","MET52229",0,5,"MET",["MET41828"],"",["MET227"]],
+		["Fundición y manufactura","MET52329",0,5,"MET",["MET41828"],""],
+		["Gestión y optimización de operaciones","MET52129",0,5,"MET",["MET41428"],""],
+		["Instrumentación y control de procesos","MET52529",0,5,"MET",["MET41428"],"",["IQA350"]],
+		["Taller de diseño de procesos metalúrgicos","MET52029",0,5,"MET",["MET41528"],""],
+		["Electivo","MET61929-1",0,5,"EL",[],""]
+	],
+	"s10": [
+		["Actividad de titulación","MET52629",0,17,"MET",["MET52029"],""],
+		["Electivo","MET61929-2",0,5,"EL",[],""]
+	]
+}

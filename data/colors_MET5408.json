@@ -1,0 +1,12 @@
+{
+	"MAT": ["#00838F", "Matemáticas"],
+	"FIS": ["#2E58A7", "Físicas"],
+	"HUM": ["#B0B91D", "Humanistas"],
+	"PC": ["#C54B73", "Plan Común"],
+	"IND": ["#6BA8D1", "Industrias"],
+	"MET": ["#FF8000", "Metalurgia"],
+	"QUI": ["#991B1E", "Química"],
+	"ICQ": ["#00AD5D", "Ingeniería Quimica"],
+	"EL": ["#bd9f0d", "Electivos"],
+	"ING": ["#F78E1E", "Otras Ingenierías"]
+}
