@@ -284,11 +284,11 @@ class Ramo {
     approveRamo() {
         if (!this.approved) {
             if (!this.isCustom)
-                d3.select("#" + this.sigla).select(".cross").transition().delay(20).attr("opacity", "1");
+                this.ramo.select(".cross").transition().delay(20).attr("opacity", "1");
             this.malla.approveSubject(this)
         } else {
             if (!this.isCustom)
-                d3.select("#" + this.sigla).select(".cross").transition().delay(20).attr("opacity", "0.01");
+                this.ramo.select(".cross").transition().delay(20).attr("opacity", "0.01");
             this.malla.deApproveSubject(this)
             }
         this.approved = !this.approved;
