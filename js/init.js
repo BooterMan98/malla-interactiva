@@ -45,6 +45,8 @@ let personalizar = document.URL.includes('personalizar')
 let mallaPersonal = document.URL.includes("malla.")
 let contact = document.URL.includes("contact")
 let fullCareerName = ""
+let homologatedTo = null
+let homologatedName = ""
 let texts = "Malla"
 if (mallaPersonal)
     texts = "Personal"
@@ -122,7 +124,7 @@ if (params.get('SCT') === "false")
             console.log(date)
             document.getElementById("lastUpdate").textContent = date.toLocaleString()
         })
-    Promise.all(promises).then((datas) => {
+    let bigPromise = Promise.all(promises).then((datas) => {
         welcomeTexts = datas.pop()[texts]
 
         let home = document.getElementById("goToHome")
@@ -157,7 +159,11 @@ if (params.get('SCT') === "false")
 
             careers.forEach(career => {
                 if (career['Link'] === carr) {
+                    console.log(career)
                     fullCareerName = career["Nombre"]
+                    homologatedTo = career["homologatedTo"]
+                    console.log(homologatedTo)
+                    console.log("homo 2")
                     welcomeTexts["welcomeTitle"] = welcomeTexts["welcomeTitle"].replace("CARRERA", career['Nombre'])
                     $('.carrera').text(career['Nombre'])
                     if (mallaPersonal) {
@@ -171,6 +177,11 @@ if (params.get('SCT') === "false")
                     }
                 }
             });
+
+            homo = careers.find((career) => career['Link'] == homologatedTo)
+            if (homo != null) {
+                homologatedName = homo["Nombre"]
+            }
             $('#carreras1-nav').append(careers.map(function (values) {
                 return tabTpl1.map(render(values)).join('');
             }));
@@ -194,7 +205,8 @@ function removePopUp() {
     })
 }
 
-  $(function () {
+function doRendering () {
+    let fulfillBeforeFirstRender = []
       if (contact)
           return
 
@@ -246,11 +258,21 @@ function removePopUp() {
           malla.enableCreditsStats()
           malla.enableCreditsSystem()
           malla.enableSave()
+        console.log(homologatedTo)
+        console.log(carr)
+        console.log(fullCareerName)
+           if (homologatedTo != null) {
+                let homologatedMalla = new MallaHomologated(sct)
+                let manager = new MallaManager(malla, homologatedMalla)
+                fulfillBeforeFirstRender.push(homologatedMalla.setCareer(homologatedTo, homologatedName, relaPath))
+                console.log("homo")
+               document.getElementById("homologate").addEventListener("click", () => manager.renderHomologateMalla())
+           }
           document.getElementById("cleanApprovedButton").addEventListener("click", () => malla.cleanSubjects())
 
       }
-
-      let drawnMalla = malla.setCareer(carr, fullCareerName, relaPath).then((val) => {
+      fulfillBeforeFirstRender.push(malla.setCareer(carr, fullCareerName, relaPath))
+      let drawnMalla = Promise.all(fulfillBeforeFirstRender) .then((val) => {
           return malla.drawMalla(".canvas")
       });
       drawnMalla.then(() => {
@@ -281,7 +303,7 @@ function removePopUp() {
 
 
       })
-  });
+  };
 
 function changeCreditsSystem() {
     let key = 'SCT'
@@ -310,3 +332,7 @@ function changeCreditsSystem() {
     //this will reload the page, it's likely better to store this until finished
     document.location.search = kvp.join('&');
 }
+
+bigPromise.then(() => {
+    doRendering()
+})
