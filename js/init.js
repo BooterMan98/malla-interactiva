@@ -195,6 +195,14 @@ if (params.get('SCT') === "false")
     })
 // }
 
+function removeHomologatedPopUp() {
+    d3.selectAll(".inset-overlay").style("-webkit-backdrop-filter", "blur(0px) contrast(100%)");
+    d3.selectAll(".inset-overlay").style("backdrop-filter", "blur(0px) contrast(100%)");
+    d3.select(".overlay-content").transition().style("filter", "opacity(0)")
+    d3.select(".inset-overlay").transition().style("filter", "opacity(0)").on('end', function() {
+        d3.select(this).remove();
+    })
+}
 function removePopUp() {
     d3.select("body").style("overflow", "initial")
     d3.selectAll(".overlay").style("-webkit-backdrop-filter", "blur(0px) contrast(100%)");
