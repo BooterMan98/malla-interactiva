@@ -53,11 +53,11 @@ class MallaHomologated extends Malla {
     }
 
     defineHomologatedRamos(oldAprovedSubjects) {
+        this.cleanSubjects()
         while (this.homologated.length > 0) {
             let ramo = this.homologated.pop()
             ramo.deHomologateRame()
         }
-        this.verifyPrer()
         for (let subject of Object.values(this.ALLSUBJECTS)) {
             let isHomologatable = subject.checkHomologatability(oldAprovedSubjects)
             if (isHomologatable) {
@@ -65,6 +65,7 @@ class MallaHomologated extends Malla {
                 this.homologated.push(subject)
             } 
         }
+        this.verifyPrer()
     }
 
     homologateButton() {

@@ -131,22 +131,48 @@ header {
     filter: opacity(20%);
     z-index: 1;*/
     position: fixed;
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 7;
     -webkit-backdrop-filter: blur(50px) contrast(120%);
     backdrop-filter: blur(50px) contrast(120%);
     background-color: rgba(255,255,255,0.2); /* Black background with opacity */
     transition: 0.5s;
+}
+.homologation-container {
+    position: relative;
+    /* padding: 50px; */
+}
+
+.inset-overlay {
+    position: absolute;
+    border-radius: 25px;
+    padding: 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 5;
+
+    backdrop-filter: blur(50px) contrast(120%);
+    background-color: rgba(255,255,255,0.2);/* Black background with opacity */
+    transition: 0.5s;
+
+}
+
+.inset-overlay-content {
+    z-index: 6; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+
 }
 
 .overlay-content {
     width: 100%;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
-    z-index: 6; /* Disable horizontal scroll */
+    z-index: 8; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
     overflow-y: auto;
 }
@@ -154,6 +180,10 @@ header {
 .overlay-content h1, .overlay-content h5 {
     opacity: .6;
 }
+
+
+/* .homologatedMalla {
+} */
 
 .sector {
     filter: brightness(100%);

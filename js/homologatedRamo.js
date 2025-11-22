@@ -36,8 +36,6 @@ class HomologatedRamo extends Ramo {
         if (this.homologations.length == 0) {
             return false
         }
-        console.log(approvedSubjects)
-        console.log(this.homologations)
         for (let homologation of this.homologations) {
            let hasSujectToHomologate = approvedSubjects.find((subject) => subject == homologation)
             if (hasSujectToHomologate) {
@@ -49,8 +47,21 @@ class HomologatedRamo extends Ramo {
 
     // se selecciona o deselecciona el ramo con su respectiva animación
     homologateRamo() {
-        if (!this.isCustom)
+        if (!this.isCustom) {
             this.ramo.select(".selected").transition().delay(20).attr("opacity", ".8");
+            let cross = this.ramo.select(".cross").select("path")
+            // let rect = this.ramo.select("rect")
+            //     let positionx = Number(rect.attr("x"));
+            //     let positiony = Number(rect.attr("y"));
+
+            //     let sizey = Number(rect.attr("height")) / 2
+            //     let sizex = Number(rect.attr("width")) / 2
+            //     let enterx = positionx + sizex;
+            //     let entery = positiony + sizey;
+            cross.attr("stroke", "purple")
+            // cross
+            //     .attr("transform", `rotate(90,${enterx}, ${entery})`);
+    }
         this.homologated = true;
         if (this.homologationType === 1 && !this.approved) {
             this.approveRamo()
@@ -59,8 +70,12 @@ class HomologatedRamo extends Ramo {
     };
 
     deHomologateRame() {
-        if (!this.isCustom)
+        if (!this.isCustom) {
             this.ramo.select(".selected").transition().delay(20).attr("opacity", "0.01");
+            this.ramo.select(".cross").select("path")
+            //     .attr("transform", null)
+                .attr("stroke","#550000")
+        }
         this.homologated = false;
         if (this.approved) {
             this.approveRamo()
