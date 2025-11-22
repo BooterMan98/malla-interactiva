@@ -29,6 +29,7 @@ class Malla {
         this.isMallaRendered = false
         this.showCreditSystem = false;
         this.showCreditStats = false
+        this.canvas = null
 
         this.totalCredits = 0;
         this.totalSubjects = 0;
@@ -159,15 +160,15 @@ class Malla {
         let canvasWidth = width + separator; // for full show svg
         let canvasHeight = height + separator/2
 
-        const canvas = d3.select(canvasId).append("svg")
+        this.canvas = d3.select(canvasId).append("svg")
             .attr("width", canvasWidth)
             .attr("height", canvasHeight)
             .attr("role", "figure");
 
-        canvas.append("title")
+        this.canvas.append("title")
             .text("Malla " + this.fullCareerName)
 
-        const drawer = canvas;
+        const drawer = this.canvas;
         let globalX = separator / 2,
             globalY = 0;
         let isBigBarRendered = false;
@@ -214,10 +215,10 @@ class Malla {
                     let number = parseInt(bar.select("text").text().substr(4));
                     let ramosToSelect;
                 if (bar.node().getBBox().width <= this.subjectType.getDisplayWidth(this.scaleX) * 2 - this.subjectType.getDisplayWidth(this.scaleX) / 2) {
-                    d3.select("#sem" + (number * 2 + 1)).dispatch('click')
+                    this.canvas.select("#sem" + (number * 2 + 1)).dispatch('click')
                 } else {
-                    d3.select("#sem" + number * 2).dispatch('click');
-                    d3.select("#sem" + (number * 2 - 1)).dispatch('click')
+                    this.canvas.select("#sem" + number * 2).dispatch('click');
+                    this.canvas.select("#sem" + (number * 2 - 1)).dispatch('click')
 
                 }
 
