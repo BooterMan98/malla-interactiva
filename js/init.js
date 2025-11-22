@@ -275,6 +275,7 @@ function doRendering () {
                 fulfillBeforeFirstRender.push(homologatedMalla.setCareer(homologatedTo, homologatedName, relaPath))
                 console.log("homo")
                document.getElementById("homologate").addEventListener("click", () => manager.renderHomologateMalla())
+               document.getElementById("homologate").classList.remove("d-none")
            }
           document.getElementById("cleanApprovedButton").addEventListener("click", () => malla.cleanSubjects())
 
