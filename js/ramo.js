@@ -102,7 +102,7 @@ class Ramo {
             counter +=1
         })
         this.ramo.append("title").text(
-            "Ramo " + this.sigla+ ", " + this.name+ ". Este ramo tiene " + this.getUSMCredits() + " créditos USM y " +
+            "Ramo " + this.sigla+ ", " + this.name+ ". Este ramo tiene " +
             this.getSCTCredits() + " créditos SCT. Se dicta en " + dictatesIn[this.dictatesIn] + " y "
             + (this.prer.size ? "tiene como prerrequisitos a " + prers : "no tiene prerrequisitos") + ".")
 
