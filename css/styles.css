@@ -146,6 +146,16 @@ header {
     /* padding: 50px; */
 }
 
+.prer-container {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0;
+    text-align: left;
+}
+
+.prer-container svg {
+    vertical-align: baseline;
+}
 .inset-overlay {
     position: absolute;
     border-radius: 25px;

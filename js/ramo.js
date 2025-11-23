@@ -208,7 +208,27 @@ class Ramo {
             .text(this.id);
 
         // prerr circles!
+        this.drawPrers(posX, posY, sizeX, sizeY, scaleX);
+        this.createActionListeners();
+        this.wrap(sizeX - 5, sizeY / 5 * 3);
+    }
+
+    drawPrers(posX, posY, sizeX, sizeY, scaleX, graybar = sizeY / 5) {
         let c_x = 0;
+        let prerGroup = this.ramo.append("foreignObject");
+            prerGroup.attr("x", posX)
+            prerGroup.attr("y", posY + sizeY - graybar)
+            prerGroup.attr("width", sizeX  - 22 * scaleX)
+            prerGroup.attr("height", graybar);
+        prerGroup = prerGroup.append("xhtml:div")
+        prerGroup.classed("prer-container", true)
+        prerGroup = prerGroup.append("svg")
+            prerGroup.attr("width", 5)
+            prerGroup.attr("height", graybar);
+
+        let startF1RPath = "M18 18 H9 A 9 9 0 0 1 9 0 h18 Z"
+        let endF1RPath = "M0 0 H9 A 9 9 0 0 1 9 17 H0 Z"
+
         this.prer.forEach((p) => {
             let r = 9,
                 fontsize = 10,
@@ -220,16 +240,56 @@ class Ramo {
                 variantX = 1;
                 variantY--;
             }
+
+            if (p.constructor === Array) {
+
+                let pLength = p.length
+                p.forEach((subPrer, index) => {
+                    prerGroup.attr("width", (r + 1) * 2 + Number(prerGroup.attr("width")));
+
+                    let startF1RPath = `M${r * 2 + c_x + 1 + variantX} ${graybar / 2 + r} H${r + 1 + c_x + variantX} A ${r} ${r} 0 0 1 ${r + 1 + c_x + variantX} ${graybar / 2 - r} H${r * 2 + 1 + c_x + variantX} Z`
+                    let midF1RPath = `M${1 + c_x + variantX} ${graybar / 2 - r} H${r * 2 + c_x + 1 + variantX} V${graybar / 2 + r} H${1 + c_x + variantX} Z`
+                    let endF1RPath = `M${1 + c_x + variantX} ${graybar / 2 - r} H${r + 1 + c_x + variantX} A ${r} ${r} 0 0 1 ${r + 1 + c_x + variantX} ${graybar / 2 + r} H${1 + c_x + variantX} Z`
+
+                    let prerColor = this.malla.categories[this.malla.ALLSUBJECTS[subPrer].category][0]
+                    let pPath = index === 0 ? startF1RPath : (index === pLength - 1 ? endF1RPath : midF1RPath)
+
+                    let prer = prerGroup.append("g")
+                    prer.append("path")
+                        .attr('d', pPath)
+                        .attr('fill', prerColor)
+                        .attr('stroke', 'white');
+                    prer.append('text')
+                        .attr('x',1 + r + c_x + variantX)
+                        .attr('y', graybar / 2)
+                        .text(this.malla.ALLSUBJECTS[subPrer].id)
+                        .attr("dominant-baseline", "central")
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", fontsize)
+                        .attr("dy", 0)
+                        .attr('fill', () => {
+                            if (this.needsWhiteText(prerColor))
+                                return "white";
+                            return '#222222';
+                        });
+
+                    c_x += r * 2;
+                })
+
+            } else {
+            prerGroup.attr("width", (r + 1) * 2 + Number(prerGroup.attr("width")));
+
             let prerColor = this.malla.categories[this.malla.ALLSUBJECTS[p].category][0]
-            this.ramo.append("circle")
-                .attr('cx', posX + r + c_x + variantX)
-                .attr('cy', posY + sizeY - graybar / 2)
+            let prer = prerGroup.append("g")
+            prer.append("circle")
+                .attr('cx', r + c_x + 1 + variantX)
+                .attr('cy', graybar / 2)
                 .attr('r', r)
                 .attr('fill', prerColor)
                 .attr('stroke', 'white');
-            this.ramo.append('text')
-                .attr('x', posX + r + c_x + variantX)
-                .attr('y', posY + sizeY - graybar / 2)
+            prer.append('text')
+                .attr('x',1 + r + c_x + variantX)
+                .attr('y', graybar / 2)
                 .text(this.malla.ALLSUBJECTS[p].id)
                 .attr("dominant-baseline", "central")
                 .attr("text-anchor", "middle")
@@ -241,9 +301,9 @@ class Ramo {
                     return '#222222';
                 });
             c_x += r * 2;
+            }
         });
-        this.createActionListeners();
-        this.wrap(sizeX - 5, sizeY / 5 * 3);
+    
     }
 
     // renderiza las animaciones de interacción
