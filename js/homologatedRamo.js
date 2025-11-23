@@ -1,12 +1,12 @@
 
 class HomologatedRamo extends Ramo {
 
-    constructor(name, sigla, credits, sector, prer, id, malla, creditsSCT = 0, isCustom=false, dictatesIn = "", homologations= [], hologationType=1) {
+    constructor(name, sigla, credits, sector, prer, id, malla, creditsSCT = 0, isCustom=false, dictatesIn = "", homologations= [], homologationType=1) {
         super(name, sigla, credits, sector, prer, id, malla, creditsSCT, isCustom, dictatesIn);
         this.isCustom = isCustom;
         this.homologations = homologations;
         this.homologated = false
-        this.homologationType = hologationType
+        this.homologationType = homologationType
     }   
 
     drawActions(posX, posY, sizeX, sizeY) {
@@ -16,7 +16,7 @@ class HomologatedRamo extends Ramo {
             .attr("y", posY)
             .attr("width", sizeX)
             .attr("height", sizeY)
-            .attr("stroke", 'purple')
+            .attr("stroke", this.getHomologationTypeColor())
             .attr("stroke-width", '7')
             .attr("opacity", this.homologated ? "0.8" : "0.001")
             .attr("fill-opacity", "0.001")
@@ -33,14 +33,23 @@ class HomologatedRamo extends Ramo {
     }
 
     checkHomologatability(approvedSubjects) {
-        if (this.homologations.length == 0) {
+        let hLenght = this.homologations.length
+        if (hLenght == 0) {
             return false
         }
-        for (let homologation of this.homologations) {
-           let hasSujectToHomologate = approvedSubjects.find((subject) => subject == homologation)
-            if (hasSujectToHomologate) {
-                return true
+        if (this.homologationType === 1) {
+            for (let homologation of this.homologations) {
+            let hasSujectToHomologate = approvedSubjects.find((subject) => subject == homologation)
+                if (hasSujectToHomologate) {
+                    return true
+                }
             }
+        } else if (this.homologationType === 2) {
+            return this.homologations.reduce((acc, curr) => {
+                let hasSujectToHomologate = approvedSubjects.find((subject) => subject == curr)
+
+                return acc && (hasSujectToHomologate != null)
+            }, true)
         }
         return false
     }
@@ -58,7 +67,7 @@ class HomologatedRamo extends Ramo {
             //     let sizex = Number(rect.attr("width")) / 2
             //     let enterx = positionx + sizex;
             //     let entery = positiony + sizey;
-            cross.attr("stroke", "purple")
+            cross.attr("stroke", this.getHomologationTypeColor())
             // cross
             //     .attr("transform", `rotate(90,${enterx}, ${entery})`);
     }
@@ -89,6 +98,15 @@ class HomologatedRamo extends Ramo {
             return
         }
         this.ramo.select(".non-approved").transition().delay(20).attr("opacity", "0.0");
+    }
+
+    getHomologationTypeColor() {
+        if (this.homologationType === 1) {
+            return "purple"
+        } else if (this.homologationType === 2) {
+            return "#D93FD9"
+        }
+        return "grey"
     }
 
     // activa la animación de warning con el color que se desee

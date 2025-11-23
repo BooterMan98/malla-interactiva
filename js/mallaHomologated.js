@@ -36,10 +36,14 @@ class MallaHomologated extends Malla {
                 // Agregado de ramos por semestre
                     // Nuevo formato con ramos SCT
                 let homologations = []
-                    if (subject.length === 8) {
+                let homologationType = 1
+                    if (subject.length >= 8) {
                         homologations = subject[7]
                     }
-                this.malla[semester][subject[1]] = new this.subjectType(subject[0], subject[1], subject[2], subject[4], subject[5],this.SUBJECTID++, this, subject[3], false ,subject[6], homologations)
+                    if (subject.length >= 9) {
+                        homologationType = subject[8]
+                    }
+                this.malla[semester][subject[1]] = new this.subjectType(subject[0], subject[1], subject[2], subject[4], subject[5],this.SUBJECTID++, this, subject[3], false ,subject[6], homologations, homologationType)
                 
                 // Se agrega el ramo a la lista de asignaturas
                 this.ALLSUBJECTS[subject[1]] = this.malla[semester][subject[1]];
