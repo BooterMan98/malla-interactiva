@@ -117,6 +117,5 @@ class CustomMalla extends Malla {
         })
 
         this.isMallaSet = true;
-        console.log(this.ALLSUBJECTS)
     }
 }

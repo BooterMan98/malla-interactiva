@@ -100,7 +100,6 @@ if (params.get('SCT') === "false")
 //
 // window.addEventListener("load", function () {console.log("load")})
 // function loadViews() {
-    console.log("dom")
     // obtener vistas
     let includes = document.querySelectorAll('[data-include]')
     let promises = []
@@ -118,7 +117,6 @@ if (params.get('SCT') === "false")
         .then( () => {
             return fetch(new Request(relaPath + "date.txt"))
         }).then(response => {
-            console.log(response)
             let lastModified = response.headers.get("last-modified")
             let date = new Date(lastModified)
             console.log(date)
@@ -159,11 +157,8 @@ if (params.get('SCT') === "false")
 
             careers.forEach(career => {
                 if (career['Link'] === carr) {
-                    console.log(career)
                     fullCareerName = career["Nombre"]
                     homologatedTo = career["homologatedTo"]
-                    console.log(homologatedTo)
-                    console.log("homo 2")
                     welcomeTexts["welcomeTitle"] = welcomeTexts["welcomeTitle"].replace("CARRERA", career['Nombre'])
                     $('.carrera').text(career['Nombre'])
                     if (mallaPersonal) {
@@ -266,14 +261,10 @@ function doRendering () {
           malla.enableCreditsStats()
           malla.enableCreditsSystem()
           malla.enableSave()
-        console.log(homologatedTo)
-        console.log(carr)
-        console.log(fullCareerName)
            if (homologatedTo != null) {
                 let homologatedMalla = new MallaHomologated(sct)
                 let manager = new MallaManager(malla, homologatedMalla)
                 fulfillBeforeFirstRender.push(homologatedMalla.setCareer(homologatedTo, homologatedName, relaPath))
-                console.log("homo")
                document.getElementById("homologate").addEventListener("click", () => manager.renderHomologateMalla())
                document.getElementById("homologate").classList.remove("d-none")
            }

@@ -25,7 +25,6 @@ class MallaEditor {
                 e.target.querySelector("#small-cat-name").value = ""
                 e.target.querySelector("#small-cat-name").removeAttribute("disabled")
                 e.target.querySelector("#cat-color").value = ""
-                console.log("hidden")
                 e.target.querySelector("#sectorDeleteButton").classList.remove("d-none")
                 e.target.querySelector("#sectorDeleteButton").removeEventListener("click", this.deleteCatEventListener)
                 let doneButton = e.target.querySelector("#sectorDoneButton")
@@ -387,7 +386,6 @@ class MallaEditor {
         else
             creditsSCT = parseInt(creditsSCT)
 
-        console.log(creditsSCT, creditsUSM, modal.querySelector("#custom-creditsa-USM").value)
         let sectorName = modal.querySelector('#sectorChooser').value;
         let dictatesIn = modal.querySelector('#dictatesIn').value;
         let prer = []

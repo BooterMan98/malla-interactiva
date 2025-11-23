@@ -64,8 +64,6 @@ class Malla {
             let data = JSON.parse(unparsedData)
             this.currentMalla = data.name;
             this.fullCareerName = data.name
-            console.log("hola")
-            console.log(data.name)
             return Promise.resolve(this.setMallaAndCategories(data.malla, data.categories))
 
         } else {
@@ -640,7 +638,7 @@ class Malla {
                 document.getElementById("carrColor2").textContent = input.target.value.toUpperCase()
                 document.getElementById('dMalla').setAttribute('download', "data_" + input.target.value.toUpperCase() + '.json')
                 document.getElementById('dColor').setAttribute("download", "colors_" + input.target.value.toUpperCase() + '.json')
-                console.log(this.generatedCode[0])
+                // console.log(this.generatedCode[0])
                 this.generatedCode[0] = input.target.value
 
                 $('[data-toggle="tooltip"]').tooltip()
