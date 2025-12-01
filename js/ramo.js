@@ -372,7 +372,14 @@ class Ramo {
         });
         _a = new Set(_a);
         for (let r of this.prer) {
-            if (!_a.has(r)) {
+            if (r.constructor === Array) {
+                for (let subR of r) {
+                    if (!_a.has(subR)) {
+                        this.ramo.select(".non-approved").transition().delay(20).attr("opacity", "0.71");
+                        return;
+                    }
+                }
+            } else if (!_a.has(r)) {
                 this.ramo.select(".non-approved").transition().delay(20).attr("opacity", "0.71");
                 return;
             }
